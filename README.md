@@ -11,13 +11,13 @@
 * [Usage](#usage)
 * [Team Members](#Team-members)
 
-
+***
 <!-- PROJECT INFORMATION -->
 ## Project Information
 
 This is the repository for the *BIOF501A Final Project* . 
 
-# Background Information and Hypothesis
+### Background Information and Hypothesis
 
 idea of this project is to offer a dynamic workflow to call lineages
 clinically relevant because physicians might notice everybody has a lineage from this one area of the world - perhaps in the future informing of local outbreaks 
@@ -27,6 +27,7 @@ currently, only 1 sample is processed, but for the imaginable future, more can b
 
 Currently, [https://ubc-mds.github.io/resources_pages/install_ds_stack_mac/#git](git), [https://ubc-mds.github.io/resources_pages/install_ds_stack_mac/#r-xquartz-irkernel-and-rstudio](R), [https://ubc-mds.github.io/resources_pages/install_ds_stack_mac/#latex](LaTeX), and [https://docs.conda.io/en/latest/miniconda.html](Miniconda) are required.
 
+***
 <!-- GETING STARTED -->
 
 ## Getting Started
@@ -40,6 +41,7 @@ To clone the repository, run the following shell command:
 git clone https://github.com/github_username/repo_name.git
 ```
 
+***
 <!-- USAGE -->
 
 ## Usage 
@@ -58,8 +60,7 @@ python setup.py install
 
 conda activate /Users/owner/Documents/UBC/BIOF501A/conda-env
 
-
-
+***
 <!-- TEAM -->
 ## Team-members
 
