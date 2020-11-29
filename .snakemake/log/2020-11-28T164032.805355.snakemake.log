@@ -1,0 +1,20 @@
+Building DAG of jobs...
+Creating conda environment envs/environment_pangolin.yml...
+Downloading and installing remote packages.
+CreateCondaEnvironmentException:
+Could not create conda environment from /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/envs/environment_pangolin.yml:
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... done
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+Installing pip dependencies: ...working... failed
+Pip subprocess error:
+ERROR: Could not find a version that satisfies the requirement datafunk==0.0.7 (from -r /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/.snakemake/conda/condaenv.se9rbux2.requirements.txt (line 6)) (from versions: none)
+ERROR: No matching distribution found for datafunk==0.0.7 (from -r /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/.snakemake/conda/condaenv.se9rbux2.requirements.txt (line 6))
+
+
+CondaEnvException: Pip failed
+
+
+  File "/Users/owner/Documents/UBC/BIOF501A/conda-env/lib/python3.6/site-packages/snakemake/deployment/conda.py", line 352, in create

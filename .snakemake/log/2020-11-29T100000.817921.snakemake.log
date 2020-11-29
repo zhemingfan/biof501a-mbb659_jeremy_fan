@@ -1,0 +1,29 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	retrieve_reads
+	1
+
+[Sun Nov 29 10:00:00 2020]
+rule retrieve_reads:
+    output: data/SRR11801823_1.fastq, data/SRR11801823_2.fastq
+    jobid: 0
+
+Terminating processes on user request, this might take some time.
+[Sun Nov 29 10:02:09 2020]
+Error in rule retrieve_reads:
+    jobid: 0
+    output: data/SRR11801823_1.fastq, data/SRR11801823_2.fastq
+    shell:
+        
+        #prefetch SRR11801823
+        #fasterq-dump --split-files SRR11801823/SRR11801823.sra
+        fasterq-dump --split-files SRR5790106 -O data
+        #fastq-dump SRR11801823 --split-files -O data
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Complete log: /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/.snakemake/log/2020-11-29T100000.817921.snakemake.log

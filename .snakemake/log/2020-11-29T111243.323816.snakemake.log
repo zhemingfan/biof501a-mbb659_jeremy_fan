@@ -1,0 +1,28 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	map_reads
+	1
+
+[Sun Nov 29 11:12:43 2020]
+rule map_reads:
+    input: data/reference_sequence.fasta, data/SRR11801823_combined.fastq
+    output: intermediate/SRR11801823.alignments.sorted.bam
+    jobid: 0
+
+[Sun Nov 29 11:12:58 2020]
+Error in rule map_reads:
+    jobid: 0
+    output: intermediate/SRR11801823.alignments.sorted.bam
+    shell:
+        
+        minimap2 -t 1 -ax sr data/reference_sequence.fasta data/SRR11801823_combined.fastq | samtools sort -o intermediate/intermediate/SRR11801823.alignments.sorted.bam 
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/.snakemake/log/2020-11-29T111243.323816.snakemake.log

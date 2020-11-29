@@ -1,0 +1,3 @@
+AttributeError in line 19 of /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/Snakefile:
+'Rules' object has no attribute 'retrieve_reads'
+  File "/Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/Snakefile", line 19, in <module>

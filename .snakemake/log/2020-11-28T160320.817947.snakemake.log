@@ -1,0 +1,2 @@
+SyntaxError in line 3 of /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/Snakefile:
+Unexpected keyword reference_sequence in rule definition (Snakefile, line 3)

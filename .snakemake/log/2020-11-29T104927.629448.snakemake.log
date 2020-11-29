@@ -1,0 +1,20 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Job counts:
+	count	jobs
+	1	create_fasta
+	1
+
+[Sun Nov 29 10:49:27 2020]
+rule create_fasta:
+    input: data/reference_sequence.fasta, SRR11801823.alignments.sorted.bam
+    output: SRR11801823.fasta
+    jobid: 0
+
+[Sun Nov 29 10:50:30 2020]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/.snakemake/log/2020-11-29T104927.629448.snakemake.log

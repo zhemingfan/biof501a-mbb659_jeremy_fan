@@ -1,0 +1,23 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	retrieve_reads
+	1
+
+[Sun Nov 29 09:45:12 2020]
+rule retrieve_reads:
+    output: data/SRR12820667_1.fastq, data/SRR12820667_2.fastq
+    jobid: 0
+
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 7 of /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/Snakefile:
+Job completed successfully, but some output files are missing. Missing files after 5 seconds:
+data/SRR12820667_1.fastq
+data/SRR12820667_2.fastq
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/.snakemake/log/2020-11-29T094512.757293.snakemake.log
