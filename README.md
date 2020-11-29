@@ -9,7 +9,7 @@
 * [Getting Started](#getting-started)
   + [Installation](#installation)
 * [Usage](#usage)
-* [Expected Output](#ExpectedOutput)
+* [Expected Output](#expected-output)
 * [Team Members](#Team-members)
 
 ***
@@ -63,7 +63,7 @@ conda activate /Users/owner/Documents/UBC/BIOF501A/conda-env
 
 ***
 <!-- EXPECTED OUTPUT -->
-## ExpectedOutput 
+## Expected Output 
 
 ![Expected histogram](expected_results/covid_histogram.png "Histogram illustrating lineages among all samples")
 
