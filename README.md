@@ -9,6 +9,7 @@
 * [Getting Started](#getting-started)
   + [Installation](#installation)
 * [Usage](#usage)
+* [Expected Output](#ExpectedOutput)
 * [Team Members](#Team-members)
 
 ***
@@ -61,6 +62,12 @@ python setup.py install
 conda activate /Users/owner/Documents/UBC/BIOF501A/conda-env
 
 ***
+<!-- EXPECTED OUTPUT -->
+## ExpectedOutput 
+
+![Expected histogram](expected_results/covid_histogram.png "Histogram illustrating lineages among all samples")
+
+***
 <!-- TEAM -->
 ## Team-members
 
@@ -68,3 +75,5 @@ conda activate /Users/owner/Documents/UBC/BIOF501A/conda-env
 ------ | ---------- | -------- | ------
 Jeremy Fan | Bioinformatics | Steven Jones | Weightlifting, annoying my roommate by cooking instant noodles at 3 AM 
 ***
+
+
