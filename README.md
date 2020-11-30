@@ -7,11 +7,13 @@
 * [Project Information](#project-information)
   + [Dependencies](#dependencies)
 * [Getting Started](#getting-started)
+  + [Directed Acyclic Graph (DAG) of Pipeline](#dag)
   + [Installation](#installation)
 * [Usage](#usage)
+  + [Explanation](#explanation)
 * [Expected Output](#expected-output)
 * [Team Members](#Team-members)
-* [References] (#references)
+* [References](#References)
 
 ***
 <!-- PROJECT INFORMATION -->
@@ -21,7 +23,7 @@ This is the repository for the *BIOF501A Final Project* .
 
 ### Background Information and Hypothesis
 
-COVID-19 is a global pandemic and represents one of the toughest health challenges in 2020 [[1]](#1). As cases and mortality have been rapidly increasing over the past months, the need of rapid information regarding COVID-19 sequences for scientists and clinicians have increased dramatically [[1]](#1). While existing COVID-19 pipelines for sequencing have been developed [[2]](#2). To my knowledge, few pipelines have utilized the Phylogenetic Assignment of Named Global Outbreak LINeages (PANGOLIN) software, which is a software that can rapidly detect the lineage from a given _fasta_ file. Overall, 5 FASTQ samples submitted by the **Delaware Public Health Lab** to the National Center for Biotechnology Information (NCBI) Sequence Read Archive (SRA) have been identified and will be used to demonstrate the validity of this pipeline. As the US is seeing unprecendented rise in the number of COVID cases, rapid and urgent responses must be done as quickly as possible, and this pipeline offers an expedient manner of collecting lineage. Theoretically, this may be relevant clinically relevant as physicians might notice that a cluster of cases have a common lineage, which may inform they of either a superspread event occuring or whether distinct, separate local outbreaks are occuring. While currently only 1 sample is processed, more can be used in the imaginable future if this pipeline is further developed. Based on previous literature which suggest that type A and type C are found in significant proportions in Europeans and Americans, I hypothesize that the majority of samples will be either type A or type B lineage[[3]](#3). 
+COVID-19 is a global pandemic and represents one of the toughest health challenges in 2020 [[1]](#1). As cases and mortality have been rapidly increasing over the past months, the need of rapid information regarding COVID-19 sequences for scientists and clinicians have increased dramatically [[1]](#1). While existing COVID-19 pipelines for sequencing have been developed [[2]](#2). To my knowledge, few pipelines have utilized the [https://github.com/cov-lineages/pangolin](Phylogenetic Assignment of Named Global Outbreak LINeages (PANGOLIN) software), which is a software that can rapidly detect the lineage from a given _fasta_ file. Overall, 5 FASTQ samples submitted by the **Delaware Public Health Lab** to the National Center for Biotechnology Information (NCBI) Sequence Read Archive (SRA) have been identified and will be used to demonstrate the validity of this pipeline. As the US is seeing unprecendented rise in the number of COVID cases, rapid and urgent responses must be done as quickly as possible, and this pipeline offers an expedient manner of collecting lineage. Theoretically, this may be relevant clinically relevant as physicians might notice that a cluster of cases have a common lineage, which may inform they of either a superspread event occuring or whether distinct, separate local outbreaks are occuring. While currently only 1 sample is processed, more can be used in the imaginable future if this pipeline is further developed. Based on previous literature which suggest that type A and type C are found in significant proportions in Europeans and Americans, I hypothesize that the majority of samples will be either type A or type B lineage[[3]](#3). Note that for this analysis, only paired-end reads data was used.
 
 ### Dependencies
 
@@ -40,7 +42,7 @@ Before getting started, note that the reference sequence has already been provid
 4. Running `pangolin` to generate a _.csv_ file of the result. 
 5. Creating a histogram using `matplotlib` of the lineages counts.
 
-### Directed Acyclic Graph for Workflow
+### Directed Acyclic Graph (DAG) of Pipeline
 ![](assets/dag.svg) 
 
 ### Installation
@@ -55,10 +57,31 @@ git clone https://github.com/zhemingfan/biof501a-mbb659_jeremy_fan.git
 
 ## Usage 
 
-Once the repository has been downloaded, more effort needs to be done to get the full installation. 
+Once the repository has been downloaded, more effort needs to be done to get the full installation. Unfortunately, an _environment.yml_ could not be provided as `pangolin` must be downloaded in a specific manner. 
 
-Basically just follow the normal pangolin installation:
+Start by following the normal [https://github.com/cov-lineages/pangolin](pangolin installation):
+1. Clone the repository at a location of your choosing.
+```sh
+git clone https://github.com/cov-lineages/pangolin.git 
+```
+2. Go into the `pangolin` folder. 
+```sh
+cd pangolin
+```
+3. Create the `conda` environment file.
+```sh
+conda env create -f environment.yml
+```
+4. Activate the `conda` environment.
+```sh
+conda activate pangolin
+```
+5. Run _setup.py_ the file to finalize installation
+```sh
+python setup.py install
+```
 
+In one chunk, this is:
 ```sh
 git clone https://github.com/cov-lineages/pangolin.git 
 cd pangolin
@@ -67,27 +90,41 @@ conda activate pangolin
 python setup.py install
 ```
 
-
+Afterwards, install a suite of tools from bioconda, conda-forge, and conda. 
 ```sh
-conda install -c bioconda sra-tools samtools=1.9 openssl=1.0 bcftools seqtk ## note you must do this version of samtools, newer versions are messed up
-```
-
-```sh
+conda install -c bioconda sra-tools samtools=1.9 openssl=1.0 bcftools seqtk 
 conda install -c conda-forge matplotlib
 conda install pandas
 ```
 
-To run the pipeline: 
+To run the pipeline, go into the directory containing the _Snakemake_ file, make sure the `pangolin` conda environment is activated and run the following: 
 ```sh
 snakemake --cores 1   
 ```
 
-The total expected running time should be at most 5 minutes (excluding data download, which may take the longer).
+The total expected running time should be at most 10 minutes (excluding data download, which may take the longer).
+
+### Explanation
+
+1. Extracting FASTQ reads through the `sra-toolkit`.
+    -`fasterq-dump --split-files SRR12960723 -O data`: this line of code
+
+2. Mapping the reads to the reference sequence using `minimap2`.
+3. Creating _fasta_ file through `samtools`. 
+4. Running `pangolin` to generate a _.csv_ file of the result. 
+5. Creating a histogram using `matplotlib` of the lineages counts.
+
+|  Step    |          Command                                    |            Description                                            |
+-----------| ----------------------------------------------------| ----------------------------------------------------------------- |
+
+|    1     | `fasterq-dump --split-files SRR12960723 -O data`    | `fasterq-dump` is a faster way to extract _fastq_ files from the `sra-toolkit`. `--split-files` indicate split reads, and the `-O` flag suggests output to a directory called _data_
+
+
 ***
 <!-- EXPECTED OUTPUT -->
 ## Expected Output 
 
-![Expected histogram](expected_results/covid_histogram.png "Histogram illustrating lineages among all samples")
+![Expected histogram](expected_results/covid_histogram.png)
 
 ***
 <!-- TEAM -->
