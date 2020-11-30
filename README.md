@@ -11,6 +11,8 @@
   + [Installation](#installation)
 * [Usage](#usage)
   + [Explanation](#explanation)
+  + [Input](#input)
+  + [Ouput](#output)
 * [Expected Output](#expected-output)
 * [Team Members](#Team-members)
 * [References](#References)
@@ -23,18 +25,18 @@ This is the repository for the *BIOF501A Final Project* .
 
 ### Background Information and Hypothesis
 
-COVID-19 is a global pandemic and represents one of the toughest health challenges in 2020 [[1]](#1). As cases and mortality have been rapidly increasing over the past months, the need of rapid information regarding COVID-19 sequences for scientists and clinicians have increased dramatically [[1]](#1). While existing COVID-19 pipelines for sequencing have been developed [[2]](#2). To my knowledge, few pipelines have utilized the [https://github.com/cov-lineages/pangolin](Phylogenetic Assignment of Named Global Outbreak LINeages (PANGOLIN) software), which is a software that can rapidly detect the lineage from a given _fasta_ file. Overall, 5 FASTQ samples submitted by the **Delaware Public Health Lab** to the National Center for Biotechnology Information (NCBI) Sequence Read Archive (SRA) have been identified and will be used to demonstrate the validity of this pipeline. As the US is seeing unprecendented rise in the number of COVID cases, rapid and urgent responses must be done as quickly as possible, and this pipeline offers an expedient manner of collecting lineage. Theoretically, this may be relevant clinically relevant as physicians might notice that a cluster of cases have a common lineage, which may inform they of either a superspread event occuring or whether distinct, separate local outbreaks are occuring. While currently only 1 sample is processed, more can be used in the imaginable future if this pipeline is further developed. Based on previous literature which suggest that type A and type C are found in significant proportions in Europeans and Americans, I hypothesize that the majority of samples will be either type A or type B lineage[[3]](#3). Note that for this analysis, only paired-end reads data was used.
+COVID-19 is a global pandemic and represents one of the toughest health challenges in 2020 [[1]](#1). As cases and mortality have been rapidly increasing over the past months, the need of rapid information regarding COVID-19 sequences for scientists and clinicians have increased dramatically [[1]](#1). While existing COVID-19 pipelines for sequencing have been developed [[2]](#2). To my knowledge, few pipelines have utilized the [Phylogenetic Assignment of Named Global Outbreak LINeages (PANGOLIN) software](https://github.com/cov-lineages/pangolin]), which is a software that can rapidly detect the lineage from a given _fasta_ file. Overall, 5 FASTQ samples submitted by the **Delaware Public Health Lab** to the National Center for Biotechnology Information (NCBI) Sequence Read Archive (SRA) have been identified and will be used to demonstrate the validity of this pipeline. As the US is seeing unprecendented rise in the number of COVID cases, rapid and urgent responses must be done as quickly as possible, and this pipeline offers an expedient manner of collecting lineage. Theoretically, this may be relevant clinically relevant as physicians might notice that a cluster of cases have a common lineage, which may inform they of either a superspread event occuring or whether distinct, separate local outbreaks are occuring. While currently only 1 sample is processed, more can be used in the imaginable future if this pipeline is further developed. Based on previous literature which suggest that type A and type C are found in significant proportions in Europeans and Americans, I hypothesize that the majority of samples will be either type A or type B lineage[[3]](#3). Note that for this analysis, only paired-end reads data was used.
 
 ### Dependencies
 
-Currently, [https://ubc-mds.github.io/resources_pages/install_ds_stack_mac/#git](git) and [https://docs.conda.io/en/latest/miniconda.html](Miniconda) are required to run this program. It will be implicitly assumed that users have this already installed.
+Currently, [git](https://ubc-mds.github.io/resources_pages/install_ds_stack_mac/#git) and [Miniconda](https://docs.conda.io/en/latest/miniconda.html) are required to run this program. It will be implicitly assumed that users have this already installed.
 
 ***
 <!-- GETING STARTED -->
 
 ## Getting Started
 
-Before getting started, note that the reference sequence has already been provided for convenience, and can be found [https://www.ncbi.nlm.nih.gov/nuccore/1798174254](here). Briefly, the pipeline was built with `Snakemake` and is split into the following steps:
+Before getting started, note that the reference sequence has already been provided for convenience, and can be found [here](https://www.ncbi.nlm.nih.gov/nuccore/1798174254). Briefly, the pipeline was built with `Snakemake` and is split into the following steps:
 
 1. Extracting FASTQ reads through the `sra-toolkit`.
 2. Mapping the reads to the reference sequence using `minimap2`.
@@ -59,7 +61,7 @@ git clone https://github.com/zhemingfan/biof501a-mbb659_jeremy_fan.git
 
 Once the repository has been downloaded, more effort needs to be done to get the full installation. Unfortunately, an _environment.yml_ could not be provided as `pangolin` must be downloaded in a specific manner. 
 
-Start by following the normal [https://github.com/cov-lineages/pangolin](pangolin installation):
+Start by following the normal [pangolin installation](https://github.com/cov-lineages/pangolin):
 1. Clone the repository at a location of your choosing.
 ```sh
 git clone https://github.com/cov-lineages/pangolin.git 
@@ -90,7 +92,7 @@ conda activate pangolin
 python setup.py install
 ```
 
-Afterwards, install a suite of tools from bioconda, conda-forge, and conda. 
+Afterwards, install a suite of tools from bioconda, conda-forge, and conda. Check yes to everything.
 ```sh
 conda install -c bioconda sra-tools samtools=1.9 openssl=1.0 bcftools seqtk 
 conda install -c conda-forge matplotlib
@@ -115,15 +117,49 @@ The total expected running time should be at most 10 minutes (excluding data dow
         -for the future, if ever long reads are added to this pipeline, `minimap2` would make an ideal choice 
 
 3. Creating _fasta_ file through `samtools`. 
-    -the following steps are adapted from an answer from [https://www.biostars.org/p/367626/](Biostars). Briefly, `mpileup`produces "pileup" textual format from an alignment
-    -
-
-
-
+    -the following steps are adapted from an answer from [https://www.biostars.org/p/367626/](Biostars). Briefly, `mpileup`produces "pileup" textual format from an alignment. then an eventual "consensus" of the most frequently occuring base at each spot is generated through `bcftools call` and `vcfutils.pl vcf2fq`. This practically does the same as `bcftools consensus`.
 
 4. Running `pangolin` to generate a _.csv_ file of the result. 
-    -`pangolin` is fairly self contained - basically a linear model is built and then run 
+    -`pangolin` is fairly self contained package - basically a multinomial logistic regression model built using 30,000 SARS-CoV-2 sequences from GISAID
+
 5. Creating a histogram using `matplotlib` of the lineages counts.
+    -`pandas` is used to read the _csv_ file
+    -`matplotlib` has a built in histogram feature that can be called with 
+
+### Input
+
+The first input file provided in the data folder is a sequence of the _Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1, complete genome_. This file follows traditional FASTA format (one line header starting with ">" following a sequence of nucleotides in the second line). Five additional _fastq_ files can be found from SRA, for instance one of the read file is [here](https://www.ncbi.nlm.nih.gov/sra/?term=SRR12960723). All of the read files are standard, and are paired-ends, thus accounting for why later a `cat` command will be run to merge them. 
+
+### Output
+
+After running the pipeline, the final directory should look something similar to below (note hidden files are excluded):
+├── assets
+│   └── dag.svg
+├── data
+│   ├── reference_sequence.fasta
+│   ├── reference_sequence.fasta.fai
+│   ├── SRR12960723_combined.fastq
+│   ├── SRR12960724_combined.fastq
+│   ├── SRR12960725_combined.fastq
+│   ├── SRR12960726_combined.fastq
+|   └── SRR12960727_combined.fastq
+├── expected_results
+│   ├── covid_histogram.png
+│   └── lineage_report.csv
+├── results
+│   ├── covid_histogram.png
+│   └── lineage_report.csv
+├── combined.fasta
+├── new_combined.fasta
+├── replace_header.py
+├── plot_histogram.py
+├── Snakefile
+├── SRR12960723.alignments.sorted.bam
+├── SRR12960724.alignments.sorted.bam
+├── SRR12960725.alignments.sorted.bam
+├── SRR12960726.alignments.sorted.bam
+├── SRR12960727.alignments.sorted.bam
+└── README.md
 
 
 
