@@ -92,7 +92,7 @@ conda activate pangolin
 python setup.py install
 ```
 
-Afterwards, install a suite of tools from bioconda, conda-forge, and conda. Check yes to everything.
+Afterwards, install a suite of tools from bioconda, conda-forge, and conda. Check yes to everything by clicking the "y" key.
 ```sh
 conda install -c bioconda sra-tools samtools=1.9 openssl=1.0 bcftools seqtk 
 conda install -c conda-forge matplotlib
@@ -128,7 +128,7 @@ The total expected running time should be at most 10 minutes (excluding data dow
 
 ### Input
 
-The first input file provided in the data folder is a sequence of the _Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1, complete genome_. This file follows traditional FASTA format (one line header starting with ">" following a sequence of nucleotides in the second line). Five additional _fastq_ files can be found from SRA, for instance one of the read file is [here](https://www.ncbi.nlm.nih.gov/sra/?term=SRR12960723). All of the read files are standard, and are paired-ends, thus accounting for why later a `cat` command will be run to merge them. 
+The first input file provided in the data folder is a sequence of the _Severe acute respiratory syndrome coronavirus 2 isolate Wuhan-Hu-1, complete genome_. This file follows traditional FASTA format (one line header starting with ">" following a sequence of nucleotides in the second line). Five additional _fastq_ files can be found from SRA, for instance one of the read file is [here](https://www.ncbi.nlm.nih.gov/sra/?term=SRR12960723). The accession numbers are: SRR12960723, SRR12960724, SRR12960725, SRR12960726, SRR12960727. All of the read files are standard, and are paired-ends, thus accounting for why later a `cat` command will be run to merge them. 
 
 ### Output
 
