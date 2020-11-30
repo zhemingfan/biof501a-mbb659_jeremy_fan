@@ -145,9 +145,7 @@ To be noted:
     - lineage_report.csv which provides a report on the samples and the lineage they were called
     - covid_histogram.png which provides a visual perspective of the same data in the lineage report
 
-Overall, while lineages A and C were anticipated, most samples were classified as lineage B.1. This is surprising as we don't know how this could have possibly hapepned. In other manuscripts, B.1 has reported to move around. 
-
-
+Overall, while lineages A and C were anticipated, most samples were classified as lineage B.1. In other manuscripts, however, the B.1 lineage has also spread to North America, and was noted to start in New York City [[4]](#4)[[5]](#5). This specific lineage contains a specific mutation (D614G) within the Spike protein that has been been linked with higher contagion [[6]](#6). Newer reports seem to indicate that both B.1 and A.3 have also been commonly observed across the United States [[7]](#7). However, as the sample size was only limited to 5, it is difficult to come with definitive conclusions about which lineages are most common in Delaware. As more data is later acquired, more evidence can be brought up and perhaps targeted therapies at specific mutations in specific lineages may arise. 
 
 ***
 <!-- EXPECTED OUTPUT -->
@@ -176,3 +174,14 @@ https://doi.org/10.3390/v12080895
 <a id="3">[3]</a> 
 Peter Forster, Lucy Forster, Colin Renfrew, Michael Forster. "Phylogenetic network analysis of SARS-CoV-2 genomes". Proceedings of the National Academy of Sciences Apr 2020, 117 (17) 9241-9243; DOI: 10.1073/pnas.2004999117
 
+<a id="4">[4]</a> 
+Worobey M, Pekar J, Larsen BB, et al. The emergence of SARS-CoV-2 in Europe and the US. Preprint. bioRxiv. 2020;2020.05.21.109322. Published 2020 May 23. doi:10.1101/2020.05.21.109322
+
+<a id="5">[5]</a> 
+Maurano M. T., Ramaswami S., Westby G., Zappile P., Dimartino D., Shen G., Feng X., Ribeiro-dos-Santos A. M., Vulpescu N. A., Black M., Hogan M., Marier C., Meyn P., Zhang Y., Cadley J., Ordonez R., Luther R., Huang E., Guzman E., Serrano A., Belovarac B., Gindin T., Lytle A., Pinnell J., Vougiouklakis T., Boytard L., Chen J., Lin L. H., Rapkiewicz A., Raabe V., Samanovic-Golden M. I., Jour G., Osman I., Aguero-Rosenfeld M., Mulligan M. J., Cotzia P., Snuderl M., Heguy A., Sequencing identifies multiple, early introductions of SARS-CoV2 to New York City Region. medRxiv (2020), , doi:10.1101/2020.04.15.20064931
+
+<a id="6">[6]</a> 
+Korber B., Fischer W. M., Gnanakaran S., Yoon H., Theiler J., Abfalterer W., Foley B., Giorgi E. E., Bhattacharya T., Parker M. D., Partridge D. G., Evans C. M., Freeman T. M., de Silva T. I., on behalf of the Sheffield COVID-19 Genomics Group, LaBranche C. C., Montefiori D. C., Spike mutation pipeline reveals the emergence of a more transmissible form of SARS-CoV-2. bioRxiv (2020), p. 2020.04.29.069054.
+
+<a id="7">[7]</a> 
+Ladner JT, Larsen BB, Bowers JR, Hepp CM, Bolyen E, Folkerts M, Sheridan K, Pfeiffer A, Yaglom H, Lemmer D, Sahl JW, Kaelin EA, Maqsood R, Bokulich NA, Quirk G, Watts TD, Komatsu K, Waddell V, Lim ES, Caporaso JG, Engelthaler DM, Worobey M, Keim P. 2020. An early pandemic analysis of SARS-CoV-2 population structure and dynamics in Arizona. mBio 11:e02107-20. https://doi.org/10.1128/mBio.02107-20.
