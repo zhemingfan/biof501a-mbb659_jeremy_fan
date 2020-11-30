@@ -117,7 +117,7 @@ The total expected running time should be at most 10 minutes (excluding data dow
 |  Step    |          Command                                    |            Description                                            |
 -----------| ----------------------------------------------------| ----------------------------------------------------------------- |
 
-|    1     | `fasterq-dump --split-files SRR12960723 -O data`    | `fasterq-dump` is a faster way to extract _fastq_ files from the `sra-toolkit`. `--split-files` indicate split reads, and the `-O` flag suggests output to a directory called _data_
+|    1     | `fasterq-dump --split-files SRR12960723 -O data`    | `fasterq-dump` is a faster way to extract _fastq_ files from the `sra-toolkit`. `--split-files` indicate split reads, and the `-O` flag suggests output to a directory called _data_ | 
 
 
 ***
