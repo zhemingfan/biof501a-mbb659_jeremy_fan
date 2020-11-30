@@ -11,7 +11,7 @@
 * [Usage](#usage)
 * [Expected Output](#expected-output)
 * [Team Members](#Team-members)
-* [References] (#References)
+* [References] (#references)
 
 ***
 <!-- PROJECT INFORMATION -->
@@ -102,9 +102,11 @@ Jeremy Fan | Bioinformatics | Steven Jones | Annoying my roommate by cooking ins
 ## References
 <a id="1">[1]</a> 
 Lee, M. (2020). Clinical Characteristics Of Early Noncritical Hospitalized Patients With Coronavirus Disease 2019 (Covid-19): A Single-Center Retrospective Study In New York City. doi:10.26226/morressier.5ebc261fffea6f735881a237
+
 <a id="2">[2]</a> 
 Nasir, Jalees A., Robert A. Kozak, Patryk Aftanas, Amogelang R. Raphenya, Kendrick M. Smith, Finlay Maguire, Hassaan Maan et al. "A Comparison of Whole Genome Sequencing of SARS-CoV-2 Using Amplicon-Based Sequencing, Random Hexamers, and Bait Capture." Viruses 12, no. 8 (2020): 895.
 https://doi.org/10.3390/v12080895
+
 <a id="3">[3]</a> 
 Peter Forster, Lucy Forster, Colin Renfrew, Michael Forster. "Phylogenetic network analysis of SARS-CoV-2 genomes". Proceedings of the National Academy of Sciences Apr 2020, 117 (17) 9241-9243; DOI: 10.1073/pnas.2004999117
 
