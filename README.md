@@ -107,17 +107,23 @@ The total expected running time should be at most 10 minutes (excluding data dow
 ### Explanation
 
 1. Extracting FASTQ reads through the `sra-toolkit`.
-    -`fasterq-dump --split-files SRR12960723 -O data`: this line of code
+    -`fasterq-dump --split-files SRR12960723 -O data`: `fasterq-dump` is a faster way to extract _fastq_ files from the `sra-toolkit`. `--split-files` indicate split reads, and the `-O` flag suggests output to a directory called _data_ 
+    -afterwards, a `cat` is run to append the two paired ends read files together. If successful, remove the individual _fastq_ to save storage space
 
 2. Mapping the reads to the reference sequence using `minimap2`.
+    -`minimap2` is a [https://github.com/lh3/minimap2](general purpose alligner), but largely maintains much of the performance as `bwa-mem` for short reads. the `-ax sr` flag is added to specify short reads. `samtools` is then called to sort the data by leftmost coordinates
+        -for the future, if ever long reads are added to this pipeline, `minimap2` would make an ideal choice 
+
 3. Creating _fasta_ file through `samtools`. 
+    -the following steps are adapted from an answer from [https://www.biostars.org/p/367626/](Biostars). Briefly, 
+    
+
+
+
 4. Running `pangolin` to generate a _.csv_ file of the result. 
+    -`pangolin` is fairly self contained - basically a linear model is built and then run 
 5. Creating a histogram using `matplotlib` of the lineages counts.
 
-|  Step    |          Command                                    |            Description                                            |
------------| ----------------------------------------------------| ----------------------------------------------------------------- |
-
-|    1     | `fasterq-dump --split-files SRR12960723 -O data`    | `fasterq-dump` is a faster way to extract _fastq_ files from the `sra-toolkit`. `--split-files` indicate split reads, and the `-O` flag suggests output to a directory called _data_ | 
 
 
 ***

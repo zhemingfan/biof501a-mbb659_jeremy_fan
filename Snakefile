@@ -69,19 +69,19 @@ rule create_fasta:
         1
     shell:
         """
-        samtools mpileup -uf {input.ref} {input.bam_1}| bcftools call -c | vcfutils.pl vcf2fq > covid_1.fastq
+        bcftools mpileup -uf {input.ref} {input.bam_1}| bcftools call -c | vcfutils.pl vcf2fq > covid_1.fastq
         seqtk seq -aQ64 -q20 -n N covid_1.fastq > SRR11801823.fasta && rm covid_1.fastq
 
-        samtools mpileup -uf {input.ref} {input.bam_2}| bcftools call -c | vcfutils.pl vcf2fq > covid_2.fastq
+        bcftools mpileup -uf {input.ref} {input.bam_2}| bcftools call -c | vcfutils.pl vcf2fq > covid_2.fastq
         seqtk seq -aQ64 -q20 -n N covid_2.fastq > SRR11801824.fasta && rm covid_2.fastq
 
-        samtools mpileup -uf {input.ref} {input.bam_3}| bcftools call -c | vcfutils.pl vcf2fq > covid_3.fastq
+        bcftools mpileup -uf {input.ref} {input.bam_3}| bcftools call -c | vcfutils.pl vcf2fq > covid_3.fastq
         seqtk seq -aQ64 -q20 -n N covid_3.fastq > SRR11801825.fasta && rm covid_3.fastq
 
-        samtools mpileup -uf {input.ref} {input.bam_4}| bcftools call -c | vcfutils.pl vcf2fq > covid_4.fastq
+        bcftools mpileup -uf {input.ref} {input.bam_4}| bcftools call -c | vcfutils.pl vcf2fq > covid_4.fastq
         seqtk seq -aQ64 -q20 -n N covid_4.fastq > SRR11801826.fasta && rm covid_4.fastq
 
-        samtools mpileup -uf {input.ref} {input.bam_5}| bcftools call -c | vcfutils.pl vcf2fq > covid_5.fastq
+        bcftools mpileup -uf {input.ref} {input.bam_5}| bcftools call -c | vcfutils.pl vcf2fq > covid_5.fastq
         seqtk seq -aQ64 -q20 -n N covid_5.fastq > SRR11801827.fasta && rm covid_5.fastq
 
         cat SRR11801823.fasta SRR11801824.fasta SRR11801825.fasta SRR11801826.fasta SRR11801827.fasta > combined.fasta && rm SRR11801823.fasta SRR11801824.fasta SRR11801825.fasta SRR11801826.fasta SRR11801827.fasta
@@ -107,19 +107,3 @@ rule produce_histogram:
         """
         python3 plot_histogram.py {input.input_csv}
         """
-
-
-### finall plot the pictures
-### TODO: 
-
-# 1) MAKE SURE PIPELINE CAN RE-RUN
-# 3) add in more read files.. 
-# 4) get rid of warning messages 
-
-# rule dag:
-#     output:
-#         dag="snakemake_workflow_dag.png"
-#     shell:
-#         """
-#         snakemake parse_variants --dag | dot -Tpng > {output.dag}
-#         """
