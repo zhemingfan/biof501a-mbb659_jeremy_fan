@@ -115,8 +115,9 @@ The total expected running time should be at most 10 minutes (excluding data dow
         -for the future, if ever long reads are added to this pipeline, `minimap2` would make an ideal choice 
 
 3. Creating _fasta_ file through `samtools`. 
-    -the following steps are adapted from an answer from [https://www.biostars.org/p/367626/](Biostars). Briefly, 
-    
+    -the following steps are adapted from an answer from [https://www.biostars.org/p/367626/](Biostars). Briefly, `mpileup`produces "pileup" textual format from an alignment
+    -
+
 
 
 
