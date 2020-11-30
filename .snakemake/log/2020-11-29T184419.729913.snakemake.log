@@ -1,0 +1,19 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	map_reads
+	1
+
+[Sun Nov 29 18:44:19 2020]
+rule map_reads:
+    input: data/reference_sequence.fasta, data/SRR12960723_combined.fastq, data/SRR12960724_combined.fastq, data/SRR12960725_combined.fastq, data/SRR12960726_combined.fastq, data/SRR12960727_combined.fastq
+    output: SRR12960723.alignments.sorted.bam, SRR12960724.alignments.sorted.bam, SRR12960725.alignments.sorted.bam, SRR12960726.alignments.sorted.bam, SRR12960727.alignments.sorted.bam
+    jobid: 0
+
+[Sun Nov 29 18:44:56 2020]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/.snakemake/log/2020-11-29T184419.729913.snakemake.log

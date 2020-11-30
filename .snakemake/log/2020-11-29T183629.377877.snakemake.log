@@ -1,0 +1,2 @@
+SyntaxError in line 47 of /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/Snakefile:
+No rule keywords allowed after run/shell/script/wrapper/cwl in rule map_reads. (Snakefile, line 47)

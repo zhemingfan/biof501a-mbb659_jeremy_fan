@@ -1,0 +1,8 @@
+Building DAG of jobs...
+MissingInputException in line 32 of /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/Snakefile:
+Missing input files for rule map_reads:
+data/SRR11801827_combined.fastq
+data/SRR11801826_combined.fastq
+data/SRR11801824_combined.fastq
+data/SRR11801825_combined.fastq
+data/SRR11801823_combined.fastq

@@ -1,0 +1,45 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	create_fasta
+	1
+
+[Sun Nov 29 18:50:17 2020]
+rule create_fasta:
+    input: data/reference_sequence.fasta, SRR12960723.alignments.sorted.bam, SRR12960724.alignments.sorted.bam, SRR12960725.alignments.sorted.bam, SRR12960726.alignments.sorted.bam, SRR12960727.alignments.sorted.bam
+    output: combined.fasta
+    jobid: 0
+
+[Sun Nov 29 18:52:52 2020]
+Error in rule create_fasta:
+    jobid: 0
+    output: combined.fasta
+    shell:
+        
+        samtools mpileup -uf data/reference_sequence.fasta SRR12960723.alignments.sorted.bam| bcftools call -c | vcfutils.pl vcf2fq > covid_1.fastq
+        seqtk seq -aQ64 -q20 -n N covid_1.fastq > SRR11801823.fasta && rm covid_1.fastq
+
+        samtools mpileup -uf data/reference_sequence.fasta SRR12960724.alignments.sorted.bam| bcftools call -c | vcfutils.pl vcf2fq > covid_2.fastq
+        seqtk seq -aQ64 -q20 -n N covid_2.fastq > SRR11801824.fasta && rm covid_2.fastq
+
+        samtools mpileup -uf data/reference_sequence.fasta SRR12960725.alignments.sorted.bam| bcftools call -c | vcfutils.pl vcf2fq > covid_3.fastq
+        seqtk seq -aQ64 -q20 -n N covid_3.fastq > SRR11801825.fasta && rm covid_3.fastq
+
+        samtools mpileup -uf data/reference_sequence.fasta SRR12960726.alignments.sorted.bam| bcftools call -c | vcfutils.pl vcf2fq > covid_4.fastq
+        seqtk seq -aQ64 -q20 -n N covid_4.fastq > SRR11801826.fasta && rm covid_4.fastq
+
+        samtools mpileup -uf data/reference_sequence.fasta SRR12960727.alignments.sorted.bam| bcftools call -c | vcfutils.pl vcf2fq > covid_5.fastq
+        seqtk seq -aQ64 -q20 -n N covid_5.fastq > SRR11801827.fasta && rm covid_5.fastq
+
+        cat covid_1.fastq covid_2.fastq covid_3.fastq covid_4.fastq covid_5.fastq > combined.fasta
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job create_fasta since they might be corrupted:
+combined.fasta
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/.snakemake/log/2020-11-29T185017.453842.snakemake.log

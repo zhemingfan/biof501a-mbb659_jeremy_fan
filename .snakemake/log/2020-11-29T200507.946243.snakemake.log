@@ -1,0 +1,40 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	create_csv
+	1	produce_histogram
+	3
+
+[Sun Nov 29 20:05:07 2020]
+rule create_csv:
+    input: SRR11801823.fasta, SRR12960723.fasta
+    output: results/first.csv
+    jobid: 1
+
+[Sun Nov 29 20:05:08 2020]
+Finished job 1.
+1 of 3 steps (33%) done
+
+[Sun Nov 29 20:05:08 2020]
+rule produce_histogram:
+    input: results/first.csv
+    output: results/covid_histogram.png
+    jobid: 2
+
+[Sun Nov 29 20:05:09 2020]
+Error in rule produce_histogram:
+    jobid: 2
+    output: results/covid_histogram.png
+    shell:
+        
+        python3 plot_histogram.py results/first.csv
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/.snakemake/log/2020-11-29T200507.946243.snakemake.log

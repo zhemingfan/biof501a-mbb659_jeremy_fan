@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 1 of /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/Snakefile:
+Missing input files for rule all:
+results/lineage_report.csv

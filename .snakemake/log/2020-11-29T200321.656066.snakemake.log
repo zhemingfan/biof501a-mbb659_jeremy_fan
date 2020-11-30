@@ -1,0 +1,19 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	create_csv
+	1	produce_histogram
+	3
+
+[Sun Nov 29 20:03:21 2020]
+rule create_csv:
+    input: SRR11801823.fasta, SRR12960723.fasta
+    output: results/first.csv
+    jobid: 1
+
+RuleException in line 59 of /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/Snakefile:
+NameError: The name 'print ">" ++i; next' is unknown in this context. Please make sure that you defined that variable. Also note that braces not used for variable access have to be escaped by repeating them, i.e. {{print $1}}

@@ -1,0 +1,72 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	create_csv
+	1	create_fasta
+	1	map_reads
+	1	produce_histogram
+	1	retrieve_reads
+	6
+
+[Sun Nov 29 20:44:09 2020]
+rule retrieve_reads:
+    output: data/SRR12960723_combined.fastq, data/SRR12960724_combined.fastq, data/SRR12960725_combined.fastq, data/SRR12960726_combined.fastq, data/SRR12960727_combined.fastq
+    jobid: 5
+
+[Sun Nov 29 20:45:17 2020]
+Finished job 5.
+1 of 6 steps (17%) done
+
+[Sun Nov 29 20:45:17 2020]
+rule map_reads:
+    input: data/reference_sequence.fasta, data/SRR12960723_combined.fastq, data/SRR12960724_combined.fastq, data/SRR12960725_combined.fastq, data/SRR12960726_combined.fastq, data/SRR12960727_combined.fastq
+    output: SRR12960723.alignments.sorted.bam, SRR12960724.alignments.sorted.bam, SRR12960725.alignments.sorted.bam, SRR12960726.alignments.sorted.bam, SRR12960727.alignments.sorted.bam
+    jobid: 4
+
+[Sun Nov 29 20:45:53 2020]
+Finished job 4.
+2 of 6 steps (33%) done
+
+[Sun Nov 29 20:45:53 2020]
+rule create_fasta:
+    input: data/reference_sequence.fasta, SRR12960723.alignments.sorted.bam, SRR12960724.alignments.sorted.bam, SRR12960725.alignments.sorted.bam, SRR12960726.alignments.sorted.bam, SRR12960727.alignments.sorted.bam
+    output: combined.fasta
+    jobid: 3
+
+[Sun Nov 29 20:48:47 2020]
+Finished job 3.
+3 of 6 steps (50%) done
+
+[Sun Nov 29 20:48:47 2020]
+rule create_csv:
+    input: combined.fasta
+    output: results/lineage_report.csv
+    jobid: 1
+
+[Sun Nov 29 20:49:19 2020]
+Finished job 1.
+4 of 6 steps (67%) done
+
+[Sun Nov 29 20:49:19 2020]
+rule produce_histogram:
+    input: results/lineage_report.csv
+    output: results/covid_histogram.png
+    jobid: 2
+
+[Sun Nov 29 20:49:21 2020]
+Finished job 2.
+5 of 6 steps (83%) done
+
+[Sun Nov 29 20:49:21 2020]
+localrule all:
+    input: results/lineage_report.csv, results/covid_histogram.png
+    jobid: 0
+
+[Sun Nov 29 20:49:21 2020]
+Finished job 0.
+6 of 6 steps (100%) done
+Complete log: /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/.snakemake/log/2020-11-29T204409.112593.snakemake.log

@@ -1,2 +1,6 @@
 taxon,lineage,probability,pangoLEARN_version,status,note
-NC_045512.2,B.1.1,0.94,2020-10-30,passed_qc,
+1,B.1,0.91,2020-10-30,passed_qc,
+2,A.3,1.0,2020-10-30,passed_qc,
+3,B.1,0.91,2020-10-30,passed_qc,
+4,B.1,0.36,2020-10-30,passed_qc,
+5,B.1,0.36,2020-10-30,passed_qc,

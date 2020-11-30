@@ -1,0 +1,27 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	create_csv
+	1	produce_histogram
+	3
+
+[Sun Nov 29 19:55:38 2020]
+rule create_csv:
+    input: SRR11801823.fasta, SRR12960723.fasta
+    output: results/first.csv, results/new.csv
+    jobid: 1
+
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 65 of /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/Snakefile:
+Job completed successfully, but some output files are missing. Missing files after 5 seconds:
+results/new.csv
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Removing output files of failed job create_csv since they might be corrupted:
+results/first.csv
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/.snakemake/log/2020-11-29T195538.345737.snakemake.log

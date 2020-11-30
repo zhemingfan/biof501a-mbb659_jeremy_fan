@@ -1,0 +1,18 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	retrieve_reads
+	1
+
+[Sun Nov 29 19:35:53 2020]
+rule retrieve_reads:
+    output: data/SRR12960723_combined.fastq, data/SRR13091823_combined.fastq
+    jobid: 0
+
+[Sun Nov 29 19:37:05 2020]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/.snakemake/log/2020-11-29T193553.763701.snakemake.log

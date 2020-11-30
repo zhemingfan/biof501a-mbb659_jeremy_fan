@@ -1,0 +1,19 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	create_csv
+	1
+
+[Sun Nov 29 20:27:32 2020]
+rule create_csv:
+    input: SRR11801823.fasta, SRR12960723.fasta
+    output: results/lineage_report.csv
+    jobid: 0
+
+[Sun Nov 29 20:28:00 2020]
+Finished job 0.
+1 of 1 steps (100%) done
+Complete log: /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/.snakemake/log/2020-11-29T202732.426187.snakemake.log

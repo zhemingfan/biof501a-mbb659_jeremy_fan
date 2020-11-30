@@ -1,0 +1,2 @@
+SyntaxError in line 70 of /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/Snakefile:
+Unexpected keyword csv in rule definition (Snakefile, line 70)

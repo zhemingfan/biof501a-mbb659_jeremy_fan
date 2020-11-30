@@ -1,0 +1,29 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	produce_histogram
+	2
+
+[Sun Nov 29 20:09:09 2020]
+rule produce_histogram:
+    input: results/lineage_report.csv
+    output: results/covid_histogram.png
+    jobid: 1
+
+[Sun Nov 29 20:09:10 2020]
+Error in rule produce_histogram:
+    jobid: 1
+    output: results/covid_histogram.png
+    shell:
+        
+        python3 plot_histogram.py results/lineage_report.csv
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /Users/owner/Documents/UBC/BIOF501A/term_project/biof501a-mbb659_jeremy_fan/.snakemake/log/2020-11-29T200909.878585.snakemake.log
