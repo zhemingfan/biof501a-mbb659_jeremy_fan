@@ -133,33 +133,19 @@ The first input file provided in the data folder is a sequence of the _Severe ac
 ### Output
 
 After running the pipeline, the final directory should look something similar to below (note hidden files are excluded):
-├── assets
-│   └── dag.svg
-├── data
-│   ├── reference_sequence.fasta
-│   ├── reference_sequence.fasta.fai
-│   ├── SRR12960723_combined.fastq
-│   ├── SRR12960724_combined.fastq
-│   ├── SRR12960725_combined.fastq
-│   ├── SRR12960726_combined.fastq
-|   └── SRR12960727_combined.fastq
-├── expected_results
-│   ├── covid_histogram.png
-│   └── lineage_report.csv
-├── results
-│   ├── covid_histogram.png
-│   └── lineage_report.csv
-├── combined.fasta
-├── new_combined.fasta
-├── replace_header.py
-├── plot_histogram.py
-├── Snakefile
-├── SRR12960723.alignments.sorted.bam
-├── SRR12960724.alignments.sorted.bam
-├── SRR12960725.alignments.sorted.bam
-├── SRR12960726.alignments.sorted.bam
-├── SRR12960727.alignments.sorted.bam
-└── README.md
+
+![](assets/file_directory.png) 
+
+To be noted: 
+
+1. _combined.fasta_ is a _fasta_ file with the combined _fasta_ from all the samples.
+2. _newcombined.fasta_ is another file except all the headers are changed to allow analysis (previously all headers were the same)
+3. A series of _.bam_ files such as _SRR12960723.alignments.sorted.bam_ are the results of the allignment between reads and the reference genome provided.
+4. Within the results folder, there will be two new files
+    - lineage_report.csv which provides a report on the samples and the lineage they were called
+    - covid_histogram.png which provides a visual perspective of the same data in the lineage report
+
+Overall, while lineages A and C were anticipated, most samples were classified as lineage B.1. This is surprising as we don't know how this could have possibly hapepned. In other manuscripts, B.1 has reported to move around. 
 
 
 
